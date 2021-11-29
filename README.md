@@ -23,27 +23,15 @@
 ## Features
 -
 
-
-## Setup
-
-
-
 ## Usage
 -
 
 ## Project Status
 Project is: _in progress_
 
-## Room for Improvement
-- Give MyClientelle's appearance personalization options.
-- Give MyClientelle the abbility to feature a client's image.
 
 To do:
 - Feature 
 
-
-## Contact
-Created by NinaKmb  - feel free to contact me!   
-email: ninakmb@hotmail.com
 
 <!-- This project is open source -->
