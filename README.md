@@ -16,9 +16,8 @@
 - It helps professionals keep their sessions organized and have a general perspective of their clients' needs.
 
 ## Technologies Used
-- Visual Studio 2022 
-- C# 10
 - .NET 6.0
+- 
 
 
 ## Features
