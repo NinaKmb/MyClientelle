@@ -7,9 +7,6 @@
 * [Features](#features)
 * [Setup](#setup)
 * [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Contact](#contact)
 
 ## General Information
 - My Clientelle is an application for professionals to manage their clients' personal data and write down notes about their sessions.
@@ -26,8 +23,6 @@
 ## Usage
 -
 
-## Project Status
-Project is: _in progress_
 
 
 To do:
