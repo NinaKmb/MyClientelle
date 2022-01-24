@@ -1,13 +1,16 @@
-﻿using ClientelleAPI.Models;
+namespace ClientelleAPI.Repositories;
 
-namespace ClientelleAPI.Repositories
+using Kampa.MyClientelle.Persistence.Model;
+
+public interface IPatientRepository
 {
-    public interface IPatientRepository
-    {
-        Task<IEnumerable<patient>> Get();
-        Task <patient> Get(int id);
-        Task <patient> Create(patient patient);
-        Task Update(patient patient);
-        Task Delete(int id);
-    }
+  Task<IEnumerable<Patient>> Get();
+
+  Task<Patient> Get(int id);
+
+  Task<Patient> Create(Patient patient);
+
+  Task Update(Patient patient);
+
+  Task Delete(int id);
 }

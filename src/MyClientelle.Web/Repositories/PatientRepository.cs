@@ -1,51 +1,51 @@
-﻿using ClientelleAPI.Models;
-using ClientelleAPI.Repositories;
+namespace ClientelleAPI.Repositories;
+
+using Kampa.MyClientelle.Persistence;
+using Kampa.MyClientelle.Persistence.Model;
+
 using Microsoft.EntityFrameworkCore;
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClientelleAPI.Repositories
+[CLSCompliant(false)]
+public class PatientRepository : IPatientRepository
 {
-    public class PatientRepository : IPatientRepository
-    {
-        private readonly PatientContext _context;
+  private readonly MyClientelleDbContext context;
 
-        public PatientRepository(PatientContext context)
-        {
-            _context = context;
-        }
+  public PatientRepository(MyClientelleDbContext context)
+  {
+    this.context = context;
+  }
 
-        public async Task<patient> Create(patient patient)
-        {
-            _context.patient.Add(patient);
-            await _context.SaveChangesAsync();
+  public async Task<Patient> Create(Patient patient)
+  {
+    context.Patients.Add(patient);
+    await context.SaveChangesAsync();
 
-            return patient;
-        }
+    return patient;
+  }
 
-        public async Task Delete(int id)
-        {
-            var patientToDelete = await _context.patient.FindAsync(id);
-            _context.Patient.Remove(patientToDelete);
-            await _context.SaveChangesAsync();
-        }
+  public async Task Delete(int id)
+  {
+    var patientToDelete = await context.Patients.FindAsync(id);
+    context.Patients.Remove(patientToDelete);
+    await context.SaveChangesAsync();
+  }
 
-        public async Task<IEnumerable<patient>> Get()
-        {
-            return await _context.Patient.ToListAsync();
-        }
+  public async Task<IEnumerable<Patient>> Get()
+  {
+    return await context.Patients.ToListAsync();
+  }
 
-        public async Task<patient> Get(int id)
-        {
-            return await _context.patient.FindAsync(id);
-        }
+  public async Task<Patient> Get(int id)
+  {
+    return await context.Patients.FindAsync(id);
+  }
 
-        public async Task Update(patient Patient)
-        {
-            _context.Entry(Patient).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-    }
+  public async Task Update(Patient patient)
+  {
+    context.Entry(patient).State = EntityState.Modified;
+    await context.SaveChangesAsync();
+  }
 }

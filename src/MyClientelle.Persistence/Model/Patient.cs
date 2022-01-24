@@ -1,6 +1,8 @@
 namespace Kampa.MyClientelle.Persistence.Model;
 
-public class Patient
+using Kampa.MyClientelle.Persistence.Helpers;
+
+public class Patient : Entity<long>
 {
   public string FirstName { get; set; } = string.Empty;
 
