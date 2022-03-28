@@ -1,7 +1,5 @@
 namespace Kampa.MyClientelle.Web.Helpers;
 
-using Kampa.MyClientelle.Persistence;
-
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -9,13 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 public class BaseController<T> : ControllerBase
   where T : BaseController<T>
 {
-  public BaseController(MyClientelleDbContext ctx, ILogger<T> logger)
+  public BaseController(ILogger<T> logger)
   {
-    Ctx = ctx;
     Logger = logger;
   }
-
-  protected MyClientelleDbContext Ctx { get; }
 
   protected ILogger<T> Logger { get; }
 }

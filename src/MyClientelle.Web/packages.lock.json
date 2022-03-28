@@ -234,6 +234,14 @@
         "resolved": "1.2.3",
         "contentHash": "Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw=="
       },
+      "Refit": {
+        "type": "Transitive",
+        "resolved": "6.2.16",
+        "contentHash": "YuybpkrOjDwBSWXghALZqqTuPgmWMAGV36332Vt4yFqtxopl6xWP00XrWMrwBDFyiFANxPJTJMAvte7SRJ6wog==",
+        "dependencies": {
+          "System.Net.Http.Json": "6.0.0"
+        }
+      },
       "Scrutor": {
         "type": "Transitive",
         "resolved": "3.3.0",
@@ -331,6 +339,14 @@
         "resolved": "4.5.4",
         "contentHash": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw=="
       },
+      "System.Net.Http.Json": {
+        "type": "Transitive",
+        "resolved": "6.0.0",
+        "contentHash": "GbIV4y344kGOKjshAKCIDCMUTTW/hyUC42wV0Y5SXEdIbaKBIHBUxZ2MOe4/ZiV2svUAGfQ0c8LGtUExpOI8tg==",
+        "dependencies": {
+          "System.Text.Json": "6.0.0"
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe": {
         "type": "Transitive",
         "resolved": "6.0.0",
@@ -361,7 +377,10 @@
         }
       },
       "Kampa.MyClientelle.Web.Shared": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "Refit": "6.2.16"
+        }
       }
     }
   }

@@ -14,4 +14,6 @@ public class MyClientelleDbContext : DbContext
   }
 
   public DbSet<Patient> Patients { get; init; }
+
+  public DbSet<Appointment> Appointments { get; init; }
 }

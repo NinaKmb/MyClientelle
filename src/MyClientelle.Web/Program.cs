@@ -1,5 +1,8 @@
 #pragma warning disable SA1516 // Elements should be separated by blank line
+using ClientelleAPI.Repositories;
+
 using Kampa.MyClientelle.Persistence;
+using Kampa.MyClientelle.Persistence.Repositories;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -13,6 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyClientelleDbContext>(o => o.UseSqlite("Data source=patients.db"));
 
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+
+// AN o xrhsths exei dialexei ccloud version
+// builder.Services.AddScoped<IPatientRepository, ApiPatientRepository>();
 builder.Services.AddSwaggerGen(c =>
 {
   c.SwaggerDoc("v1", new OpenApiInfo { Title = "PatientAPI", Version = "v1" });
