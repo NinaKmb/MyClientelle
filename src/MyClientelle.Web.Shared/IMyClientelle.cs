@@ -27,9 +27,6 @@ public interface IMyClientelle
   [Get("/api/appointment")]
   Task<GetAppointmentDto> GetAppointmentAsync(long id);
 
-  [Get("/api/Appointment")]
-  Task<List<GetAppointmentDto>> GetAllAppointmentAsync();
-
   [Post("/api/Appointment")]
   Task<GetPatientDto> CreateAppointmentAsync(CreateAppointmentDto dto);
 
@@ -38,4 +35,22 @@ public interface IMyClientelle
 
   [Delete("/api/Appointment")]
   Task DeleteAppointmentAsync(long id);
+}
+
+public interface IMyClientelle
+{
+  [Get("/api/Examinations")]
+  Task<GetExaminationsDto> GetExaminationsAsync(long id);
+
+  [Get("/api/Examinations")]
+  Task<List<GetExaminationsDto>> GetAllExaminationsAsync();
+
+  [Post("/api/Examinations")]
+  Task<GetExaminationsDto> CreateExaminationsAsync(CreateExaminationsDto dto);
+
+  [Put("/api/Examinations")]
+  Task<GetAppointmentDto> UpdateExaminationsAsync(UpdateExaminationsDto dto);
+
+  [Delete("/api/Examinations")]
+  Task DeleteExaminationsAsync(long id);
 }

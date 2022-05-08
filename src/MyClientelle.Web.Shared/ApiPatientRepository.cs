@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ClientelleAPI.Repositories;
 
 using Kampa.MyClientelle.Web.Shared.Dto;
+using Kampa.MyClientelle.Web.Shared.Repositories;
 
 public class ApiPatientRepository : IPatientRepository
 {
@@ -27,7 +28,7 @@ public class ApiPatientRepository : IPatientRepository
   public Task Delete(long id) => Api.DeletePatientAsync(id);
 }
 
-public class ApiAppointmentRepository : AppointmentRepository
+public class ApiAppointmentRepository : IAppointmentRepository
 {
   public ApiAppointmentRepository(IMyClientelle api)
   {
@@ -36,13 +37,29 @@ public class ApiAppointmentRepository : AppointmentRepository
 
   protected IMyClientelle Api { get; }
 
-  public Task<List<GetAppointmentDto>> GetAllAppointment() => Api.GetAllAppointmentAsync();
-
   public Task<GetAppointmentDto> GetAppointment(long id) => Api.GetAppointmentAsync(id);
 
-  public Task<GetAppointmentDto> CreatePatient(CreateAppointmentDto appointment)
+  public Task<GetAppointmentDto> Create(CreateAppointmentDto appointment);
 
   public Task<GetAppointmentDto> Update(UpdateAppointmentDto appointment) => Api.UpdateAppointmentAsync(appointment);
 
   public Task Delete(long id) => Api.DeleteAppointmentAsync(id);
+}
+
+public class ApiExaminationsRepository : IExaminationsRepository
+{
+  public ApiExaminationsRepository(IMyClientelle api)
+  {
+    Api = api;
+  }
+
+  protected IMyClientelle Api { get; }
+  
+  public Task<GetExaminationsDto> GetExaminations(long exam) => Api.GetAppointmentAsync(exam);
+
+  public Task<GetExaminationsDto> Create(CreateExaminationsDto exam);
+
+  public Task<GetExaminationsDto> Update(UpdateExaminationsDto exam) => Api.UpdateExaminationsAsync(exam);
+
+  public Task Delete(long exam) => Api.DeleteExaminationsAsync(exam);
 }

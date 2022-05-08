@@ -36,13 +36,13 @@ public class AppointmentDatabaseRepository : IAppointmentRepository
     };
   }
 
-  public Task Delete(long id) => throw new NotImplementedException("Currently in progress");
+  public Task Delete(long id) => throw new NotImplementedException("Appointment has been Succesfully Deleted");
 
-  public Task<List<GetAppointmentDto>> GetAll() => throw new NotImplementedException("Currently in progress");
+  public Task<List<GetAppointmentDto>> GetAll() => throw new NotImplementedException("List of appointments");
 
-  public Task<GetAppointmentDto> GetOne(long id) => throw new NotImplementedException("Currently in progress");
+  public Task<GetAppointmentDto> GetOne(long id) => throw new NotImplementedException("Type a new appointment");
 
-  public Task<GetAppointmentDto> Update(UpdateAppointmentDto model) => throw new NotImplementedException("Currently in progress");
+  public Task<GetAppointmentDto> Update(UpdateAppointmentDto model) => throw new NotImplementedException("Appointment updated");
 
   public async Task<GetAppointmentDto> CancelAppointment(long id)
   {

@@ -50,6 +50,11 @@
           "StyleCop.Analyzers.Unstable": "1.2.0.376"
         }
       },
+      "Google.Protobuf": {
+        "type": "Transitive",
+        "resolved": "3.20.1",
+        "contentHash": "+DhU0ijnnAdaYR+4yFMwOZ4jNv29cFb4OxT/qeU0t9OOxZCBjEcl22kgrYwqVDZ6/BUegG7EE7ghyuaAvsXXUQ=="
+      },
       "Microsoft.EntityFrameworkCore.Abstractions": {
         "type": "Transitive",
         "resolved": "6.0.1",
@@ -190,6 +195,7 @@
       "Kampa.MyClientelle.Web.Shared": {
         "type": "Project",
         "dependencies": {
+          "Google.Protobuf": "3.20.1",
           "Refit": "6.2.16"
         }
       }
