@@ -76,7 +76,6 @@ public class WebHostStartup
 
     app.UseReDoc(c =>
     {
-      c.RoutePrefix = "/docs";
       c.SpecUrl("/swagger/v1/swagger.json");
       c.ExpandResponses("none");
       c.RequiredPropsFirst();
