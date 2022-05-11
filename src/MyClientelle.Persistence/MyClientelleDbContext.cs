@@ -24,10 +24,13 @@ public class MyClientelleDbContext : DbContext
   /// <inheritdoc />
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {
+    ArgumentNullException.ThrowIfNull(optionsBuilder);
+
     if (!optionsBuilder.IsConfigured)
     {
       optionsBuilder.UseSqlServer("Data Source=(LocalDb)\\MSSQLLocalDB;Database=MyClientelle;Integrated Security=true");
     }
+
     base.OnConfiguring(optionsBuilder);
   }
 }

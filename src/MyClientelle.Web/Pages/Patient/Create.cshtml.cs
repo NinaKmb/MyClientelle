@@ -1,49 +1,35 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace Kampa.MyClientelle.Web.Pages.Patient;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-using Kampa.MyClientelle.Persistence;
-using Kampa.MyClientelle.Persistence.Model;
+using Patient = Kampa.MyClientelle.Persistence.Model.Patient;
 
-namespace Kampa.MyClientelle.Web.Pages.Patient
+public class CreateModel : PageModel
 {
-  using Patient = Kampa.MyClientelle.Persistence.Model.Patient;
+  private readonly Kampa.MyClientelle.Persistence.MyClientelleDbContext context;
 
-  public class CreateModel : PageModel
+  public CreateModel(Kampa.MyClientelle.Persistence.MyClientelleDbContext context)
   {
-    private readonly Kampa.MyClientelle.Persistence.MyClientelleDbContext _context;
+    this.context = context;
+  }
 
-    public CreateModel(Kampa.MyClientelle.Persistence.MyClientelleDbContext context)
-    {
-      _context = context;
-    }
+  [BindProperty]
+  public Patient Patient { get; set; } = default!;
 
-    public IActionResult OnGet()
+  public IActionResult OnGet() => Page();
+
+  // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+  public async Task<IActionResult> OnPostAsync()
+  {
+    if (!ModelState.IsValid || context.Patients == null)
     {
       return Page();
     }
 
-    [BindProperty]
-    public Patient Patient { get; set; } = default!;
+    context.Patients.Add(Patient);
+    await context.SaveChangesAsync();
 
-
-    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-    public async Task<IActionResult> OnPostAsync()
-    {
-      if (!ModelState.IsValid || _context.Patients == null || Patient == null)
-      {
-        return Page();
-      }
-
-      _context.Patients.Add(Patient);
-      await _context.SaveChangesAsync();
-
-      return RedirectToPage("./Index");
-    }
+    return RedirectToPage("./Index");
   }
 }

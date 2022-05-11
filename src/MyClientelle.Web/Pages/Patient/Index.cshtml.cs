@@ -1,36 +1,28 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace Kampa.MyClientelle.Web.Pages.Patient;
 
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-using Kampa.MyClientelle.Persistence;
-using Kampa.MyClientelle.Persistence.Model;
+using Patient = Kampa.MyClientelle.Persistence.Model.Patient;
 
-namespace Kampa.MyClientelle.Web.Pages.Patient
+public class IndexModel : PageModel
 {
-  using Patient = Kampa.MyClientelle.Persistence.Model.Patient;
+  private readonly Kampa.MyClientelle.Persistence.MyClientelleDbContext context;
 
-  public class IndexModel : PageModel
+  public IndexModel(Kampa.MyClientelle.Persistence.MyClientelleDbContext context)
   {
-    private readonly Kampa.MyClientelle.Persistence.MyClientelleDbContext _context;
+    this.context = context;
+  }
 
-    public IndexModel(Kampa.MyClientelle.Persistence.MyClientelleDbContext context)
+#pragma warning disable CA2227 // Collection properties should be read only
+  public IList<Patient> Patient { get; set; } = default!;
+#pragma warning restore CA2227 // Collection properties should be read only
+
+  public async Task OnGetAsync()
+  {
+    if (context.Patients != null)
     {
-      _context = context;
-    }
-
-    public IList<Patient> Patient { get; set; } = default!;
-
-    public async Task OnGetAsync()
-    {
-      if (_context.Patients != null)
-      {
-        Patient = await _context.Patients.ToListAsync();
-      }
+      Patient = await context.Patients.ToListAsync();
     }
   }
 }
