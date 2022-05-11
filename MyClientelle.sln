@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClientelle.Persistence", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClientelle.Web.Models", "src\MyClientelle.Web.Models\MyClientelle.Web.Models.csproj", "{F36FCE6E-068E-48BB-AD06-E70CCBDF571D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyClientelle.Web", "src\MyClientelle.Web\MyClientelle.Web.csproj", "{8B8C9036-93F9-4546-A5DB-7574315CD234}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClientelle.Web", "src\MyClientelle.Web\MyClientelle.Web.csproj", "{8B8C9036-93F9-4546-A5DB-7574315CD234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,6 +2,8 @@ namespace Kampa.MyClientelle.Web.Helpers;
 
 using Kampa.MyClientelle.Persistence;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -37,6 +39,28 @@ public class WebHostStartup
 
     services.AddDbContext<MyClientelleDbContext>(o =>
       o.UseSqlServer(configuration.GetConnectionString("MyClientelleDb")));
+
+    services.AddAuthorization();
+    services.AddAuthentication(options =>
+      {
+        options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+        options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+      })
+      .AddCookie(cookie =>
+      {
+        cookie.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+        cookie.SlidingExpiration = true;
+      })
+      .AddOpenIdConnect(openId =>
+      {
+        openId.ClientId = configuration["Authentication:OpenId:ClientId"];
+        openId.ClientSecret = configuration["Authentication:OpenId:ClientSecret"];
+        openId.MetadataAddress = $"{configuration["Authentication:OpenId:Authority"]}/.well-known/openid-configuration";
+
+        openId.Scope.Add("profile");
+        openId.Scope.Add("openid");
+      });
   }
 
   public void Configure(WebApplication app)
