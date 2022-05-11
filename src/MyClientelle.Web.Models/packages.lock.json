@@ -26,9 +26,9 @@
       },
       "Refit": {
         "type": "Direct",
-        "requested": "[6.2.16, )",
-        "resolved": "6.2.16",
-        "contentHash": "YuybpkrOjDwBSWXghALZqqTuPgmWMAGV36332Vt4yFqtxopl6xWP00XrWMrwBDFyiFANxPJTJMAvte7SRJ6wog==",
+        "requested": "[6.3.2, )",
+        "resolved": "6.3.2",
+        "contentHash": "HxysoLBknW2FdxNXr56NjnfuxbgNh9z2QsUc9y5QtPkXSAWmShpUWDM1G+3Ls2yTyb4sItOii4gZ+GjxKkR7+A==",
         "dependencies": {
           "System.Net.Http.Json": "6.0.0"
         }
