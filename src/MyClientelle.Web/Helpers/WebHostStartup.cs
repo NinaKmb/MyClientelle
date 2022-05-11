@@ -43,10 +43,10 @@ public class WebHostStartup
   {
     ArgumentNullException.ThrowIfNull(app);
 
+    app.UseSwagger();
     if (environment.IsDevelopment())
     {
       app.UseDeveloperExceptionPage();
-      app.UseSwagger();
       app.UseSwaggerUI(c =>
       {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "PatientAPI v1");
@@ -76,6 +76,7 @@ public class WebHostStartup
 
     app.UseReDoc(c =>
     {
+      c.RoutePrefix = "/docs";
       c.SpecUrl("/swagger/v1/swagger.json");
       c.ExpandResponses("none");
       c.RequiredPropsFirst();
