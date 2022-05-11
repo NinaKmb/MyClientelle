@@ -31,8 +31,8 @@ public class PatientRepository : IPatientRepository
       FirstName = patient.FirstName,
       LastName = patient.LastName,
       Address = patient.Address,
-      AFM = patient.AFM,
-      AMKA = patient.AMKA,
+      Afm = patient.Afm,
+      Amka = patient.Amka,
       PhoneNumber = patient.PhoneNumber,
     };
 
@@ -48,8 +48,8 @@ public class PatientRepository : IPatientRepository
         FirstName = patient.FirstName,
         LastName = patient.LastName,
         Address = patient.Address,
-        AFM = patient.AFM,
-        AMKA = patient.AMKA,
+        Afm = patient.Afm,
+        Amka = patient.Amka,
         PhoneNumber = patient.PhoneNumber,
       })
       .ToListAsync();
@@ -66,8 +66,8 @@ public class PatientRepository : IPatientRepository
       FirstName = model.FirstName,
       LastName = model.LastName,
       Address = model.Address,
-      AFM = model.AFM,
-      AMKA = model.AMKA,
+      Afm = model.Afm,
+      Amka = model.Amka,
       PhoneNumber = model.PhoneNumber,
     };
 
@@ -80,8 +80,8 @@ public class PatientRepository : IPatientRepository
       FirstName = entity.FirstName,
       LastName = entity.LastName,
       Address = entity.Address,
-      AFM = entity.AFM,
-      AMKA = entity.AMKA,
+      Afm = entity.Afm,
+      Amka = entity.Amka,
       PhoneNumber = entity.PhoneNumber,
     };
 
@@ -108,8 +108,8 @@ public class PatientRepository : IPatientRepository
       FirstName = entity.FirstName,
       LastName = entity.LastName,
       Address = entity.Address,
-      AFM = entity.AFM,
-      AMKA = entity.AMKA,
+      Afm = entity.Afm,
+      Amka = entity.Amka,
       PhoneNumber = entity.PhoneNumber,
     };
 

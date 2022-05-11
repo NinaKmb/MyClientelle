@@ -12,7 +12,7 @@ public class GetPatientDto
 
   public string PhoneNumber { get; set; }
 
-  public string AFM { get; set; }
+  public string Afm { get; set; }
 
-  public string AMKA { get; set; }
+  public string Amka { get; set; }
 }

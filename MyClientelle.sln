@@ -33,9 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{C78AC8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClientelle.Persistence", "src\MyClientelle.Persistence\MyClientelle.Persistence.csproj", "{07E8EB8E-8A10-469B-B63A-6E63BD119B73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClientelle.Web", "src\MyClientelle.Web\MyClientelle.Web.csproj", "{CC0515E8-DC67-4B07-A6CB-C347073E4E10}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyClientelle.Web.Models", "src\MyClientelle.Web.Models\MyClientelle.Web.Models.csproj", "{F36FCE6E-068E-48BB-AD06-E70CCBDF571D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyClientelle.Web", "src\MyClientelle.Web\MyClientelle.Web.csproj", "{8B8C9036-93F9-4546-A5DB-7574315CD234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,22 +47,22 @@ Global
 		{07E8EB8E-8A10-469B-B63A-6E63BD119B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E8EB8E-8A10-469B-B63A-6E63BD119B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E8EB8E-8A10-469B-B63A-6E63BD119B73}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC0515E8-DC67-4B07-A6CB-C347073E4E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC0515E8-DC67-4B07-A6CB-C347073E4E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC0515E8-DC67-4B07-A6CB-C347073E4E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC0515E8-DC67-4B07-A6CB-C347073E4E10}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F36FCE6E-068E-48BB-AD06-E70CCBDF571D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F36FCE6E-068E-48BB-AD06-E70CCBDF571D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F36FCE6E-068E-48BB-AD06-E70CCBDF571D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F36FCE6E-068E-48BB-AD06-E70CCBDF571D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8C9036-93F9-4546-A5DB-7574315CD234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8C9036-93F9-4546-A5DB-7574315CD234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8C9036-93F9-4546-A5DB-7574315CD234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8C9036-93F9-4546-A5DB-7574315CD234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{07E8EB8E-8A10-469B-B63A-6E63BD119B73} = {52270E06-D3BB-4B8E-A261-377E460B5FD5}
-		{CC0515E8-DC67-4B07-A6CB-C347073E4E10} = {52270E06-D3BB-4B8E-A261-377E460B5FD5}
 		{F36FCE6E-068E-48BB-AD06-E70CCBDF571D} = {52270E06-D3BB-4B8E-A261-377E460B5FD5}
+		{8B8C9036-93F9-4546-A5DB-7574315CD234} = {52270E06-D3BB-4B8E-A261-377E460B5FD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51F9BF65-6DFB-4A56-AC1C-EA87B6678C8B}

@@ -12,7 +12,7 @@ public class Patient : Entity<long>
 
   public string PhoneNumber { get; set; } = string.Empty;
 
-  public string AMKA { get; set; } = string.Empty;
+  public string Amka { get; set; } = string.Empty;
 
-  public string AFM { get; set; } = string.Empty;
+  public string Afm { get; set; } = string.Empty;
 }
