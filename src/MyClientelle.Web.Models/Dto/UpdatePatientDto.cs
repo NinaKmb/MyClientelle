@@ -1,9 +1,7 @@
-namespace Kampa.MyClientelle.Web.Shared.Dto;
+namespace Kampa.MyClientelle.Web.Models.Dto;
 
 public class UpdatePatientDto
 {
-  public long Id { get; set; }
-
   public string FirstName { get; set; }
 
   public string LastName { get; set; }

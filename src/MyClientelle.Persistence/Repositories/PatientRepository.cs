@@ -1,17 +1,16 @@
 namespace Kampa.MyClientelle.Persistence.Repositories;
 
-using ClientelleAPI.Repositories;
-
 using Kampa.MyClientelle.Persistence;
 using Kampa.MyClientelle.Persistence.Model;
-using Kampa.MyClientelle.Web.Shared.Dto;
 
 using Microsoft.EntityFrameworkCore;
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-[CLSCompliant(false)]
+using Kampa.MyClientelle.Web.Models.Dto;
+using Kampa.MyClientelle.Web.Models.Repositories;
+
 public class PatientRepository : IPatientRepository
 {
   private readonly MyClientelleDbContext context;
@@ -21,13 +20,10 @@ public class PatientRepository : IPatientRepository
     this.context = context;
   }
 
-  public async Task<GetPatientDto?> GetOne(long id)
+  public async Task<GetPatientDto> GetOne(long id)
   {
     var patient = await context.Patients.SingleOrDefaultAsync(x => x.Id == id);
-    if (patient == null)
-    {
-      return null;
-    }
+    ArgumentNullException.ThrowIfNull(patient);
 
     var result = new GetPatientDto
     {
@@ -61,59 +57,60 @@ public class PatientRepository : IPatientRepository
     return patients;
   }
 
-  public async Task<GetPatientDto> Create(CreatePatientDto patient)
+  public async Task<GetPatientDto> Create(CreatePatientDto model)
   {
-    var model = new Patient
-    {
-      FirstName = patient.FirstName,
-      LastName = patient.LastName,
-      Address = patient.Address,
-      AFM = patient.AFM,
-      AMKA = patient.AMKA,
-      PhoneNumber = patient.PhoneNumber,
-    };
+    ArgumentNullException.ThrowIfNull(model);
 
-    context.Patients.Add(model);
-    await context.SaveChangesAsync();
-
-    var result = new GetPatientDto
+    var entity = new Patient
     {
-      Id = model.Id,
       FirstName = model.FirstName,
       LastName = model.LastName,
       Address = model.Address,
       AFM = model.AFM,
       AMKA = model.AMKA,
       PhoneNumber = model.PhoneNumber,
+    };
+
+    context.Patients.Add(entity);
+    await context.SaveChangesAsync();
+
+    var result = new GetPatientDto
+    {
+      Id = entity.Id,
+      FirstName = entity.FirstName,
+      LastName = entity.LastName,
+      Address = entity.Address,
+      AFM = entity.AFM,
+      AMKA = entity.AMKA,
+      PhoneNumber = entity.PhoneNumber,
     };
 
     return result;
   }
 
-  public async Task<GetPatientDto?> Update(UpdatePatientDto patient)
+  public async Task<GetPatientDto?> Update(long id, UpdatePatientDto model)
   {
-    var model = await context.Patients.SingleOrDefaultAsync(x => x.Id == patient.Id);
-    if (model == null)
-    {
-      return null;
-    }
+    ArgumentNullException.ThrowIfNull(model);
 
-    model.FirstName = patient.FirstName;
-    model.LastName = patient.LastName;
-    model.Address = patient.Address;
-    model.PhoneNumber = patient.PhoneNumber;
+    var entity = await context.Patients.SingleOrDefaultAsync(x => x.Id == id);
+    ArgumentNullException.ThrowIfNull(entity);
+
+    entity.FirstName = model.FirstName;
+    entity.LastName = model.LastName;
+    entity.Address = model.Address;
+    entity.PhoneNumber = model.PhoneNumber;
 
     await context.SaveChangesAsync();
 
     var result = new GetPatientDto
     {
-      Id = model.Id,
-      FirstName = model.FirstName,
-      LastName = model.LastName,
-      Address = model.Address,
-      AFM = model.AFM,
-      AMKA = model.AMKA,
-      PhoneNumber = model.PhoneNumber,
+      Id = entity.Id,
+      FirstName = entity.FirstName,
+      LastName = entity.LastName,
+      Address = entity.Address,
+      AFM = entity.AFM,
+      AMKA = entity.AMKA,
+      PhoneNumber = entity.PhoneNumber,
     };
 
     return result;

@@ -1,3 +1,4 @@
+#nullable disable
 namespace Kampa.MyClientelle.Persistence.Model;
 
 using System;

@@ -1,3 +1,4 @@
+#nullable disable
 namespace Kampa.MyClientelle.Persistence.Helpers;
 
 public interface IEntity<TKey>

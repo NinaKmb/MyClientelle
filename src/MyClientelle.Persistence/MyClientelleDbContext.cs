@@ -5,7 +5,6 @@ using Kampa.MyClientelle.Persistence.Model;
 
 using Microsoft.EntityFrameworkCore;
 
-[CLSCompliant(false)]
 public class MyClientelleDbContext : DbContext
 {
   public MyClientelleDbContext(DbContextOptions<MyClientelleDbContext> options)
@@ -17,5 +16,5 @@ public class MyClientelleDbContext : DbContext
 
   public DbSet<Appointment> Appointments { get; init; }
 
-  public DbSet<Examinations> Examination { get; init; }
+  public DbSet<Examination> Examination { get; init; }
 }

@@ -3,7 +3,6 @@ namespace Kampa.MyClientelle.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[CLSCompliant(false)]
 public class BaseController<T> : ControllerBase
   where T : BaseController<T>
 {

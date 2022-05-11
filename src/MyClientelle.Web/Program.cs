@@ -1,8 +1,7 @@
 #pragma warning disable SA1516 // Elements should be separated by blank line
-using ClientelleAPI.Repositories;
-
 using Kampa.MyClientelle.Persistence;
 using Kampa.MyClientelle.Persistence.Repositories;
+using Kampa.MyClientelle.Web.Models.Repositories;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;

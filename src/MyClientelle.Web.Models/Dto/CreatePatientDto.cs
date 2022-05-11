@@ -1,4 +1,4 @@
-namespace Kampa.MyClientelle.Web.Shared.Dto;
+namespace Kampa.MyClientelle.Web.Models.Dto;
 
 public class CreatePatientDto
 {

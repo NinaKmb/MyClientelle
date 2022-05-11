@@ -1,110 +1,87 @@
 namespace Kampa.MyClientelle.Persistence.Repositories;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-[CLSCompliant(false)]
-public class ExaminationsRepository :
+using Kampa.MyClientelle.Persistence.Model;
+using Kampa.MyClientelle.Web.Models.Dto;
+using Kampa.MyClientelle.Web.Models.Repositories;
+
+using Microsoft.EntityFrameworkCore;
+
+public class ExaminationRepository : IExaminationRepository
 {
   private readonly MyClientelleDbContext context;
 
-  public ExaminationsRepository(MyClientelleDbContext context)
+  public ExaminationRepository(MyClientelleDbContext context) => this.context = context;
+
+  public async Task<GetExaminationDto> Create(CreateExaminationDto model)
   {
-    this.context = context;
+    ArgumentNullException.ThrowIfNull(model);
+
+    var appointment = await context.Appointments.SingleOrDefaultAsync(x => x.Id == model.Appointment.Id);
+    var patient = await context.Patients.SingleOrDefaultAsync(x => x.Id == model.Patient.Id);
+    var exam = new Examination { Appointment = appointment!, Patient = patient!, Exam = model.Exam };
+
+    context.Examination.Add(exam);
+    await context.SaveChangesAsync();
+
+    var dto = new GetExaminationDto()
+    {
+      Id = exam.Id, Appointment = model.Appointment, Patient = model.Patient, Exam = exam.Exam,
+    };
+
+    return dto;
   }
 
   public async Task<GetExaminationDto> GetOne(long id)
   {
-    var examinations = await context.Examinations.SingleOrDefaultAsync(x => x.Id == id);
-    if (examinations == null)
-    {
-      return null;
-    }
+    var examination = await context.Examination.SingleOrDefaultAsync(x => x.Id == id);
+    ArgumentNullException.ThrowIfNull(examination);
 
-    var result = new GetExaminationsDto
-    {
-     examination = examinations.examination
-    };
+    // TODO: Map GetPatientDto and GetAppointmentDto
+    var result = new GetExaminationDto { Id = examination.Id, Exam = examination.Exam };
 
     return result;
   }
 
-  public async Task<List<GetExaminationsDto>> GetAll()
+  /// <inheritdoc />
+  public async Task<List<GetExaminationDto>> GetAll()
   {
-    var examinations = await context.Examinations
-      .Select(examinations => new GetExaminationsDto
-      {
-        examination = examinations.examination
-      })
+    var examinations = await context.Examination
+      .Select(x => new GetExaminationDto { Id = x.Id, Exam = x.Exam })
       .ToListAsync();
 
-    return examination;
+    return examinations;
   }
 
-  public async Task<GetExaminationsDto> Create(CreateExaminationsDto examinations)
+  /// <inheritdoc />
+  public async Task<GetExaminationDto> Update(long id, UpdateExaminationDto model)
   {
-    var model = new exam
-    {
-      examination = examinations.examination
-    };
+    ArgumentNullException.ThrowIfNull(model);
 
-    context.Patients.Add(model);
-    await context.SaveChangesAsync();
+    var examination = await context.Examination.SingleOrDefaultAsync(x => x.Id == id);
+    ArgumentNullException.ThrowIfNull(examination);
 
-    var result = new GetPatientDto
-    {
-      Id = model.Id,
-      FirstName = model.FirstName,
-      LastName = model.LastName,
-      Address = model.Address,
-      AFM = model.AFM,
-      AMKA = model.AMKA,
-      PhoneNumber = model.PhoneNumber,
-    };
+    examination.Exam = model.Exam;
+    var patient = await context.Patients.SingleOrDefaultAsync(x => x.Id == model.Patient.Id);
+    ArgumentNullException.ThrowIfNull(patient);
 
-    return result;
-  }
+    examination.Patient = patient;
 
-  public async Task<GetPatientDto?> Update(UpdatePatientDto patient)
-  {
-    var model = await context.Patients.SingleOrDefaultAsync(x => x.Id == patient.Id);
-    if (model == null)
-    {
-      return null;
-    }
-
-    model.FirstName = patient.FirstName;
-    model.LastName = patient.LastName;
-    model.Address = patient.Address;
-    model.PhoneNumber = patient.PhoneNumber;
-
-    await context.SaveChangesAsync();
-
-    var result = new GetPatientDto
-    {
-      Id = model.Id,
-      FirstName = model.FirstName,
-      LastName = model.LastName,
-      Address = model.Address,
-      AFM = model.AFM,
-      AMKA = model.AMKA,
-      PhoneNumber = model.PhoneNumber,
-    };
-
-    return result;
+    // TODO: Map GetAppoitmentDto
+    var dto = new GetExaminationDto { Patient = model.Patient, Exam = examination.Exam, };
+    return dto;
   }
 
   public async Task Delete(long id)
   {
-    var patient = await context.Patients.SingleOrDefaultAsync(x => x.Id == id);
-    if (patient == null)
-    {
-      return;
-    }
+    var examination = await context.Examination.SingleOrDefaultAsync(x => x.Id == id);
+    ArgumentNullException.ThrowIfNull(examination);
 
-    context.Patients.Remove(patient);
+    context.Examination.Remove(examination);
     await context.SaveChangesAsync();
   }
 }

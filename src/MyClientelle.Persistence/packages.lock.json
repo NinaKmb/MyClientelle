@@ -192,7 +192,7 @@
           "System.Text.Encodings.Web": "6.0.0"
         }
       },
-      "Kampa.MyClientelle.Web.Shared": {
+      "Kampa.MyClientelle.Web.Models": {
         "type": "Project",
         "dependencies": {
           "Google.Protobuf": "3.20.1",

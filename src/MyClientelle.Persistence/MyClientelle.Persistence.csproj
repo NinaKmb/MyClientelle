@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyClientelle.Web.Shared\MyClientelle.Web.Shared.csproj" />
+    <ProjectReference Include="..\MyClientelle.Web.Models\MyClientelle.Web.Models.csproj" />
   </ItemGroup>
 
 </Project>
