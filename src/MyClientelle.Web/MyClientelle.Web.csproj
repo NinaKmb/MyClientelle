@@ -26,7 +26,7 @@
     <PackageReference Include="Serilog.Exceptions.Refit" Version="8.1.0" />
     <PackageReference Include="Serilog.Expressions" Version="3.3.0" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="6.3.1" />
